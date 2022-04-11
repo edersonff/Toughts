@@ -1,0 +1,42 @@
+<h1 class="title">Todos os <b class="orange">pensamentos</b></h1>
+<div class="search-container">
+    <form action="/" method="get">
+            <input type="hidden" name="filter" value="{{option.filter}}">
+            <div class="search-form">
+                <div class="search-query-container">
+                    <input type="text" name="search_query" placeholder="Digite sua pesquisa" value="{{option.search_query}}">
+                    {{#if option.search_query}}<a href="/"><i class="bi bi-x-lg"></i></a>{{/if}}
+                </div>
+                <button class="btn">Pesquisar</button>
+            </div>
+    </form>
+    <div class="filters">
+        <p>Ordernar por:</p>
+        <form action="/" method="get">
+            <input type="hidden" name="search_query" value="{{option.search_query}}">
+            <input type="hidden" name="filter" value="down">
+            <button type="submit"><i class="bi bi-arrow-down {{#if option.isUp}}{{else if option.filter}}green{{/if}}"></i></button>
+        </form>
+        <form action="/" method="get">
+            <input type="hidden" name="search_query" value="{{option.search_query}}">
+            <input type="hidden" name="filter" value="up">
+            <button type="submit"><i class="bi bi-arrow-up {{#if option.isUp}}green{{/if}}"></i></button>
+        </form>
+        <form>
+            <a href='/?search_query={{option.search_query}}'>redefinir</a>
+        </form>
+    </div>
+</div>
+<div class="home-tought-container">
+    {{#if toughts}}
+        {{#each toughts}}
+            <div class="tought-container home">
+                <h2>"<span class="light">{{title}}</span>"</h2>
+                <p class="form-p">Por <b class="orange">{{'User.name'}}#{{'User.id'}}</b></p>
+            </div>
+        {{/each}}
+    {{else}}
+        <h2>Nenhum resultado encontrado :(</h2>
+        <p class="form-p">Volte para o inicio <a href="/">Clicando aqui</a></p>
+    {{/if}}
+</div>

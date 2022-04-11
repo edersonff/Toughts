@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toughts</title>
+    <!-- Internal -->
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- External -->
+    <!-- BootStrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <nav id="navbar">
+        <a href="/" class="logo">
+            <img src="/img/toughts_logo.png" alt="Toughts">
+        </a>
+        <ul>
+            <a href="/">Pensamentos</a>
+            <!-- URLs após autenticação -->
+            {{#if session.userid}}
+            <a href="/tought/dashboard">Dashboard</a>
+            <a href="/logout">Sair</a>
+            {{else}}
+            <a href="/login">Login</a>
+            <a href="/register">Registrar</a>
+            {{/if}}
+        </ul>
+    </nav>
+    <main>
+        {{#if messages.messageBlue}}
+            <div class="message blue">
+                {{messages.messageBlue}}
+            </div>
+        {{/if}}
+        {{#if messages.messageRed}}
+            <div class="message red">
+                {{messages.messageRed}}
+            </div>
+        {{/if}}
+        {{{body}}}
+    </main>
+    <footer>
+        <p><span>Toughts</span> &copy; 2022</p>
+    </footer>
+</body>
+</html>

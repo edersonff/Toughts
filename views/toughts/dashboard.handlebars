@@ -1,0 +1,28 @@
+<div class="dashboard">
+    <div class="title-container">
+        <h2>Dashboard</h2>
+        <a href="/tought/add" class="btn">Criar Pensamentos</a>
+    </div>
+    <h3>Seus pensamentos</h3>
+    {{#if tought}}
+        {{else}}
+        <div class="welcome-container">
+            <h1>Você ainda não tem publicações!</h1>
+            <p>Que tal começarmos? 😊 <a href="/tought/add">Clique aqui</a> para adicionar</p>
+        </div>
+    {{/if}}
+    {{#each tought}}
+        <div class="tought-container">
+            <h2>{{title}}</h2>
+                <div class="actions">
+                    <div class="actions-container">
+                        <a href="/tought/edit/{{id}}"><button disabled class="btn" type="menu">Editar</button></a>
+                        <form action="/tought/remove" method="post">
+                            <input type="hidden" name="id" value="{{id}}">
+                            <button class="btn" type="submit">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    {{/each}}
+</div>
