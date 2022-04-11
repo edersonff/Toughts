@@ -81,7 +81,7 @@ conn
 //.sync({force:true})
 .sync()
 .then(()=>{
-    app.listen(3000);
+    app.listen(80);
 })
 .catch((err)=>{
     console.error(err)
